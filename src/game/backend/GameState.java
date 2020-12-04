@@ -1,7 +1,8 @@
 package game.backend;
 
 public abstract class GameState {
-	
+
+
 	private long score = 0;
 	private int moves = 0;
 	
