@@ -10,6 +10,7 @@ public class GameApp extends Application {
 
 	public static void main(String[] args) {
 		launch(args);
+		// hola
 	}
 
 	@Override
