@@ -1,34 +1,21 @@
 package game.backend.level;
 
-import game.backend.GameState;
+public abstract class TimeLevel extends Level{
+    private final int qty;
 
-public class TimeLevel extends Level{
-    @Override
-    protected GameState newState() {
-        return null;
+    public TimeLevel(int qty) {
+        //podria ser <= pero si fuera 0 lo unico que pasa es que el nivel esta completado al empezar
+        if(qty < 0){
+            throw new IllegalStateException();
+        }
+        this.qty = qty;
     }
+     //DESPUES HAY QUE BORRAR ESTE METODO
+    @Override
+    public void nothing() {
 
-   private class ObjectiveLevelState extends GameState{
-       /*
-       tanto timebomb como time candy tienen condiciones que comparten
-       ambas tienen un cupo de caramelos "objetivos" que hay que eliminar
-       antes de que que sus respectivos contadores lleguen a cero
-        */
-       private int amount, timeLeft;
-
-       public ObjectiveLevelState(int amount, int timeLeft) {
-           this.amount = amount;
-           this.timeLeft = timeLeft;
-       }
-
-       @Override
-       public boolean gameOver() {
-           return false;
-       }
-
-       @Override
-       public boolean playerWon() {
-           return false;
-       }
-   }
+    }
+    public int getQty() {
+        return qty;
+    }
 }
