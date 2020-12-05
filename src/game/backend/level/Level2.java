@@ -16,10 +16,10 @@ public class Level2 extends Level {
         if (ret = super.tryMove(i1, j1, i2, j2)) {
             state().addMove();
             if(j1==j2){
-                setGoldenCol(j1);
+                setGoldenRow(i2);
             }
             else{
-                setGoldenRow(i2);
+                setGoldenCol(j2);
             }
 
         }
