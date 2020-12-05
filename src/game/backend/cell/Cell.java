@@ -10,6 +10,7 @@ public class Cell {
 	private Grid grid;
 	private Cell[] around = new Cell[Direction.values().length];
 	private Element content;
+	private boolean Golden=false;
 	
 	public Cell(Grid grid) {
 		this.grid = grid;
@@ -87,9 +88,16 @@ public class Cell {
 		} 
 		return false;
 	}
-	
+
 	public void setContent(Element content) {
 		this.content = content;
+	}
+
+	public boolean isGolden(){
+		return Golden;
+	}
+	public void setGolden(){
+		Golden=true;
 	}
 
 }
