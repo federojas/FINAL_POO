@@ -25,7 +25,7 @@ public class Level2 extends Level {
         int newGoldenCells = 0;
 
         for (int i = 0; i < getSize(); i++) {
-
+            
         }
     }
 
