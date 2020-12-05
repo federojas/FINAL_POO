@@ -1,6 +1,5 @@
 package game.backend.level;
 
-<<<<<<< HEAD
 import com.sun.javaws.exceptions.InvalidArgumentException;
 import game.backend.GameState;
 
@@ -32,34 +31,5 @@ protected class TimeState extends GameState {
         return objectivesLeft == 0;
     }
 
-
-}
-=======
-import game.backend.GameState;
-
-public abstract class TimeLevel extends Level{
-    private final int qty;
-
-    public TimeLevel(int qty) {
-        //podria ser <= pero si fuera 0 lo unico que pasa es que el nivel esta completado al empezar
-        if(qty < 0){
-            throw new IllegalStateException();
-        }
-        this.qty = qty;
-    }
-
-
-     //DESPUES HAY QUE BORRAR ESTE METODO
-    @Override
-    public void nothing() {
-
-    }
-
-
-
-    public int getQty() {
-        return qty;
-    }
->>>>>>> 3387fbb79ae8b1b0847f8d3c8a8bb4c0279b11de
 
 }
