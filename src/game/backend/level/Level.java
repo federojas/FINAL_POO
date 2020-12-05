@@ -6,12 +6,9 @@ import game.backend.cell.Cell;
 import game.backend.element.Wall;
 
 public abstract class Level extends Grid {
+
     private Cell wallCell;
     private Cell candyGenCell;
-
-    //DESPUES HAY QUE BORRAR ESTE METODO !!!
-    public abstract void nothing();
-
 
     @Override
     protected void fillCells() {
