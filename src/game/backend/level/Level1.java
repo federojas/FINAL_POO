@@ -28,14 +28,6 @@ public class Level1 extends Level {
 		}
 		return ret;
 	}
-
-
-	//DESPUES HAY QUE BORRAR ESTE METODO
-	@Override
-	public void nothing() {
-
-	}
-
 	private class Level1State extends GameState {
 		private long requiredScore;
 		private long maxMoves;
