@@ -9,9 +9,13 @@ public abstract class Level extends Grid {
     private Cell wallCell;
     private Cell candyGenCell;
 
-    //DESPUES HAY QUE BORRAR ESTE METODO !!!
-    public abstract void nothing();
+    public Level() {
+        initialize();
+    }
 
+    public Grid getGrid() {
+        return this;
+    }
 
     @Override
     protected void fillCells() {

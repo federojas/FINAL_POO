@@ -92,4 +92,8 @@ public class Cell {
 		this.content = content;
 	}
 
+	public Grid getGrid() {
+		return grid;
+	}
+
 }
