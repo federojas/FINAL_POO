@@ -10,11 +10,16 @@ public abstract class TimeLevel extends Level{
         }
         this.qty = qty;
     }
+
+
      //DESPUES HAY QUE BORRAR ESTE METODO
     @Override
     public void nothing() {
 
     }
+
+
+
     public int getQty() {
         return qty;
     }

@@ -26,6 +26,9 @@ public class LevelTimeTest extends TimeLevel {
             this.amount = amount;
 
         }
+        public void decAmount(){
+            amount--;
+        }
 
         public void setTimeLeft(int timeLeft) {
             this.timeLeft = timeLeft;
