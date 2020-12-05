@@ -1,5 +1,7 @@
 package game.backend.level;
 
+import game.backend.GameState;
+
 public abstract class TimeLevel extends Level{
     private final int qty;
 
@@ -23,4 +25,5 @@ public abstract class TimeLevel extends Level{
     public int getQty() {
         return qty;
     }
+
 }

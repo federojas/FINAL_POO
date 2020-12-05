@@ -1,6 +1,7 @@
 package game.backend.level;
 
 import game.backend.GameState;
+import game.backend.ObjectiveGameState;
 
 public class LevelTimeTest extends TimeLevel {
     private static final int OBJECTIVE_AMOUNT=10;
@@ -9,54 +10,22 @@ public class LevelTimeTest extends TimeLevel {
     }
     @Override
     protected GameState newState() {
-        return new ObjectiveLevelState(getQty());
+        return new LevelState(getQty());
+    }
+    @Override
+    public boolean tryMove(int i1, int j1, int i2, int j2) {
+        boolean ret;
+        if (ret = super.tryMove(i1, j1, i2, j2)) {
+            ;
+        }
+        return ret;
+    }
+    private class LevelState extends ObjectiveGameState{
+        public LevelState(int amount) {
+            super(amount);
+        }
     }
 
 
 
-    private class ObjectiveLevelState extends GameState{
-        /*
-        tanto timebomb como time candy tienen condiciones que comparten
-        ambas tienen un cupo de caramelos "objetivos" que hay que eliminar
-        antes de que que sus respectivos contadores lleguen a cero
-         */
-        private int amount, timeLeft;
-
-        public ObjectiveLevelState(int amount) {
-            this.amount = amount;
-
-        }
-        public void decAmount(){
-            amount--;
-        }
-
-        public void setTimeLeft(int timeLeft) {
-            this.timeLeft = timeLeft;
-        }
-
-        public int getAmount() {
-            return amount;
-        }
-
-        public int getTimeLeft() {
-            return timeLeft;
-        }
-
-        @Override
-        public boolean gameOver() {
-           /*
-           importante denotar que en la consigna de estos niveles no se aclara si ademas
-           del tiempo, el jugador tiene un maximo de movimientos a hacer  (MAX_MOVES)
-           por lo que se asume que la unica condicion que importa para perder es que algun
-           contador llegue a cero
-            */
-
-            return playerWon() || timeLeft==0 ;
-        }
-
-        @Override
-        public boolean playerWon() {
-            return amount==0; //cuando no quedan mas caramelos con contador el nivel se ha completado
-        }
-    }
 }
