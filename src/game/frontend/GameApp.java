@@ -5,12 +5,20 @@ import game.backend.level.Level1;
 import game.backend.level.Level2;
 import game.backend.level.LevelTimeTest;
 import javafx.application.Application;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 
-import java.awt.*;
+
 
 public class GameApp extends Application {
 
@@ -27,10 +35,16 @@ public class GameApp extends Application {
 		Scene scene = new Scene(frame);
 		primaryStage.setResizable(false);
 		primaryStage.setScene(scene);*/
+		primaryStage.setY(30);
+		primaryStage.setX(350);
+		primaryStage.setResizable(false);
+		primaryStage.setTitle("Crush Candy");
+		primaryStage.getIcons().add(new Image("images/icono_candy.jpg"));
 		primaryStage.show();
 	}
 	private Scene mainMenu(Stage primaryStage){
-		Label name= new Label("Crush Candy");
+		Label title= new Label("Crush Candy");
+		title.setFont(new Font("Roboto",24));
 		Button button1= new Button("Level 1");
 		Button button2= new Button("Level 2");
 		Button button3= new Button("Level 3");
@@ -41,9 +55,10 @@ public class GameApp extends Application {
 		button3.setOnAction(e -> openLevel(button3.getText(),primaryStage));
 		button4.setOnAction(e -> openLevel(button4.getText(), primaryStage));
 
-		VBox menu = new VBox();
-		menu.getChildren().addAll(button1,button2,button3,button4);
-
+		VBox menu = new VBox(20);
+		menu.getChildren().addAll(title,new Label("Welcome to the most flexible Candy Crush of all times!!"),new Label("Choose your level please"),button1,button2,button3,button4);
+		menu.setPrefSize(600,400);
+		menu.setAlignment(Pos.CENTER);
 		return new Scene(menu);
 	}
 	private void openLevel(String level, Stage stage){
