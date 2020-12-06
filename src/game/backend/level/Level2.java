@@ -16,19 +16,19 @@ public class Level2 extends Level {
         if (ret = super.tryMove(i1, j1, i2, j2)) {
             state().addMove();
             if(j1==j2){
-                setGoldenRow(i2);
-            }
-            else{
                 setGoldenCol(j2);
             }
-
+            else{
+                setGoldenRow(i1);
+            }
+        wasUpdated();
         }
         return ret;
     }
     private void  setGoldenCol(int col){
         int newGoldenCells=0;
         for(int i=0; i< getSize();i++){
-            if(g[i][col].isGolden()) {
+            if(!g[i][col].isGolden()) {
                 g[i][col].setGolden();
                 newGoldenCells++;
             }
@@ -38,7 +38,7 @@ public class Level2 extends Level {
     private void setGoldenRow(int fil){
         int newGoldenCells=0;
         for (int i = 0; i < getSize(); i++) {
-            if (g[fil][i].isGolden()) {
+            if (!g[fil][i].isGolden()) {
                 g[fil][i].setGolden();
                 newGoldenCells++;
             }
