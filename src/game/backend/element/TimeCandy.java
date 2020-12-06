@@ -21,4 +21,5 @@ public abstract class TimeCandy extends Candy{
     public boolean isSpecialCandy() {
         return true;
     }
+
 }
