@@ -21,7 +21,7 @@ public class Level1 extends Level {
 
 	@Override
 	public String information() {
-		return "You have to achieve "+REQUIRED_SCORE+" points in "+MAX_MOVES;
+		return "You have to achieve "+REQUIRED_SCORE+" points in "+MAX_MOVES+" moves";
 	}
 
 

@@ -26,7 +26,7 @@ public class GameApp extends Application {
 
 	public static void main(String[] args) {
 		launch(args);
-		// hola
+
 	}
 
 	@Override
@@ -101,12 +101,15 @@ public class GameApp extends Application {
 		switch(level){
 			case "Level 1":
 				levelClass = Level1.class;
+				levelinfo(new Level1());
 				break;
 			case "Level 2":
 				levelClass = Level2.class;
+				levelinfo(new Level2());
 				break;
 			case "Level 3":
 				levelClass = LevelTimeTest.class;
+				levelinfo(new LevelTimeTest());
 				break;
 			default:
 				levelClass = null;
@@ -115,6 +118,7 @@ public class GameApp extends Application {
 		CandyGame game = new CandyGame(levelClass);
 		Scene scene= new Scene(new CandyFrame(game));
 		stage.setScene(scene);
+
 
 	}
 	private void levelinfo(Level level){
