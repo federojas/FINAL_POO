@@ -1,12 +1,15 @@
 package game.frontend;
 
 import game.backend.CandyGame;
+import game.backend.Grid;
+import game.backend.level.Level;
 import game.backend.level.Level1;
 import game.backend.level.Level2;
 import game.backend.level.LevelTimeTest;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
@@ -86,7 +89,7 @@ public class GameApp extends Application {
 
 		VBox menu = new VBox(15);
 		menu.getChildren().addAll(title,description,choose,button1,button2,button3,button4);
-		menu.setPrefSize(600,500);
+		menu.setPrefSize(600,400);
 		menu.setAlignment(Pos.CENTER);
 		StackPane stackPane= new StackPane(new ImageView(new Image("images/fondo.jpg")),menu);
 
@@ -103,7 +106,6 @@ public class GameApp extends Application {
 				levelClass = Level2.class;
 				break;
 			case "Level 3":
-
 				levelClass = LevelTimeTest.class;
 				break;
 			default:
@@ -113,6 +115,14 @@ public class GameApp extends Application {
 		CandyGame game = new CandyGame(levelClass);
 		Scene scene= new Scene(new CandyFrame(game));
 		stage.setScene(scene);
+
+	}
+	private void levelinfo(Level level){
+		Alert alert = new Alert(Alert.AlertType.INFORMATION);
+		alert.setTitle("Instructions");
+		alert.setContentText(level.toString());
+		alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
+		alert.showAndWait();
 	}
 
 }

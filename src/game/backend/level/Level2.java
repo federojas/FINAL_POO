@@ -11,6 +11,11 @@ public class Level2 extends Level {
     }
 
     @Override
+    public String information() {
+        return "Each explosion paints row or column depending on the direction of the movement. You should paint all cells before "+MAX_MOVES+" moves";
+    }
+
+    @Override
     public boolean tryMove(int i1, int j1, int i2, int j2) {
         boolean ret;
         if (ret = super.tryMove(i1, j1, i2, j2)) {
@@ -47,6 +52,7 @@ public class Level2 extends Level {
         }
         ((Level2State)state()).addGoldenCells(newGoldenCells);
     }
+
 
     private class Level2State extends GameState {
         private long maxMoves;

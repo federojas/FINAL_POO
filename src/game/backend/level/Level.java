@@ -47,5 +47,8 @@ public abstract class Level extends Grid {
         }
     }
 
-
+    @Override
+    public String toString() {
+        return information();
+    }
 }

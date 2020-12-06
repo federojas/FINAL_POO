@@ -57,9 +57,7 @@ public class CandyFrame extends VBox {
 				timeLine.play();
 			}
 			@Override
-			public void cellExplosion(Element e) {
-				//
-			}
+			public void cellExplosion(Element e) {}
 		});
 
 		listener.gridUpdated();

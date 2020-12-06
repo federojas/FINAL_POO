@@ -12,6 +12,10 @@ public class LevelTimeTest extends TimeLevel {
         return new ObjectiveLevelState(getQty());
     }
 
+    @Override
+    public String information() {
+        return null;
+    }
 
 
     private class ObjectiveLevelState extends GameState{
