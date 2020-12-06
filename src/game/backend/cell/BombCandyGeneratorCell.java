@@ -6,8 +6,6 @@ import game.backend.element.TimeBombCandy;
 import game.backend.level.Level;
 import game.backend.level.Level3;
 
-import java.sql.Time;
-
 public class BombCandyGeneratorCell extends SpecialCandyGeneratorCell{
 
 

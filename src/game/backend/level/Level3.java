@@ -17,7 +17,7 @@ public class Level3 extends SpecialCandyLevel {
 
     private static int MAX_BOMBS = 10;
     private static int TIMER = 10;
-    private static double BOMB_SPAWN_RATE = 0.3;
+    private static double BOMB_SPAWN_RATE = 0.05;
 
 
     public Level3(){
@@ -44,6 +44,7 @@ public class Level3 extends SpecialCandyLevel {
         boolean result = super.tryMove(i1, j1, i2, j2);
         if (result) {
             ((Level3State) state()).addMove();
+            wasUpdated();
         }
         return result;
     }
@@ -54,8 +55,14 @@ public class Level3 extends SpecialCandyLevel {
     protected class Level3State extends GameState {
 
         private List<TimeBombCandy> currentBombs = new ArrayList<>();
-        private long bombsDeactivated=0;
+        private long bombsDeactivated = 0;
         private boolean gameLost = false;
+
+        public void activateInitialBombs() {
+            for(TimeBombCandy candy : currentBombs) {
+                candy.activate();
+            }
+        }
 
         public void bombDeactivated(TimeBombCandy bomb) {
             currentBombs.remove(bomb);
@@ -67,16 +74,18 @@ public class Level3 extends SpecialCandyLevel {
         }
 
         @Override
-        public  void addMove() {
+        public void addMove() {
             super.addMove();
             for(TimeBombCandy candy : currentBombs) {
+                if(candy.isActivated())
                     candy.decreaseTimer();
+                candy.activate();
             }
             checkBomb();
         }
 
         private void checkBomb() {
-            if(currentBombs.get(0).timeUp())
+            if(!currentBombs.isEmpty() && currentBombs.get(0).timeUp())
                 gameLost = true;
         }
 

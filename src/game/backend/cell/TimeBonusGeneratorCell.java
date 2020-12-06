@@ -13,6 +13,6 @@ public class TimeBonusGeneratorCell extends SpecialCandyGeneratorCell{
 
     @Override
     protected Element getSpecialCandy(Candy base){
-
+        return null;
     }
 }

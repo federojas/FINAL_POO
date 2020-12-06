@@ -6,12 +6,18 @@ public class TimeBombCandy extends TimeCandy {
     private static final int TIMER = 10;
     private int id;
     private static int currentId = 0;
+    private boolean isActive = false;
     public TimeBombCandy(CandyColor color) {
         super(color,TIMER);
         this.id = getId();
     }
     public void decreaseTimer(){
-        setTime(getTime()-1);
+        if(getTime() > 0) //Timer queda en cero al perder el juego
+            setTime(getTime()-1);
+    }
+
+    public boolean isActivated() {
+        return isActive;
     }
 
     public boolean timeUp() {
@@ -20,6 +26,10 @@ public class TimeBombCandy extends TimeCandy {
 
     private int getId() {
        return currentId++;
+    }
+
+    public void activate() {
+        isActive = true;
     }
 
     @Override
