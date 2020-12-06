@@ -34,4 +34,9 @@ public class TimeBombCandy extends TimeCandy {
     public int hashCode() { //Implementado por buena practica, no es necesario para arraylist
         return Objects.hash(id);
     }
+
+    @Override
+    public String getTimeInfo() {
+        return String.valueOf(getTime());
+    }
 }

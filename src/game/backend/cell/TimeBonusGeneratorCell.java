@@ -2,7 +2,7 @@ package game.backend.cell;
 
 import game.backend.element.*;
 import game.backend.level.Level;
-import game.backend.level.Level3;
+
 
 public class TimeBonusGeneratorCell extends SpecialCandyGeneratorCell{
 
@@ -12,6 +12,7 @@ public class TimeBonusGeneratorCell extends SpecialCandyGeneratorCell{
     }
 
     @Override
-    protected Element getSpecialCandy(Candy base) {
+    protected Element getSpecialCandy(Candy base){
+
     }
 }

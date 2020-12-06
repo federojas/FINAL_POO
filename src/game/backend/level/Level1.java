@@ -26,6 +26,11 @@ public class Level1 extends Level {
 		return ret;
 	}
 
+	@Override
+	public CandyGeneratorCell generateCandyCell() {
+		return new CandyGeneratorCell(this);
+	}
+
 
 	private class Level1State extends GameState {
 		private long requiredScore;

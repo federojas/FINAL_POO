@@ -25,10 +25,5 @@ public abstract class Element {
 	public long getScore() {
 		return 0;
 	}
-
-	public boolean isObjective(){
-		return false;
-	}
-
 	
 }
