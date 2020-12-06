@@ -3,6 +3,7 @@ package game.backend.level;
 import game.backend.GameState;
 import game.backend.Grid;
 import game.backend.cell.BombCandyGeneratorCell;
+import game.backend.cell.CandyGeneratorCell;
 import game.backend.cell.Cell;
 import game.backend.cell.SpecialCandyGeneratorCell;
 import game.backend.element.Element;
@@ -16,12 +17,11 @@ public class Level3 extends SpecialCandyLevel {
 
     private static int MAX_BOMBS = 10;
     private static int TIMER = 10;
-    private static double BOMB_SPAWN_RATE = 0.5;
+    private static double BOMB_SPAWN_RATE = 0.3;
 
 
     public Level3(){
         super(MAX_BOMBS);
-
     }
 
     @Override
@@ -30,9 +30,12 @@ public class Level3 extends SpecialCandyLevel {
     }
 
     @Override
-    protected void fillCells() {
+    public CandyGeneratorCell generateCandyCell() {
+        return new BombCandyGeneratorCell(this, BOMB_SPAWN_RATE);
+    }
 
-        super.fillCells();
+    public void addBomb(TimeBombCandy bomb) {
+        ((Level3State) state()).addBomb(bomb);
     }
 
 
@@ -45,7 +48,7 @@ public class Level3 extends SpecialCandyLevel {
         return result;
     }
 
-    public void deactivateBomb(){ ((Level3State) state()).bombDeactivated(); }
+    public void deactivateBomb(TimeBombCandy bomb){ ((Level3State) state()).bombDeactivated(bomb); }
 
 
     protected class Level3State extends GameState {
@@ -54,9 +57,13 @@ public class Level3 extends SpecialCandyLevel {
         private long bombsDeactivated=0;
         private boolean gameLost = false;
 
-        public void bombDeactivated() {
-            currentBombs.remove(0);
+        public void bombDeactivated(TimeBombCandy bomb) {
+            currentBombs.remove(bomb);
             bombsDeactivated++;
+        }
+
+        public void addBomb(TimeBombCandy bomb) {
+            currentBombs.add(bomb);
         }
 
         @Override

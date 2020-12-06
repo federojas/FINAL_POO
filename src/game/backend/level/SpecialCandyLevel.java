@@ -20,8 +20,5 @@ public abstract class SpecialCandyLevel extends Level {
         return maxSpecialCandy == currentSpecialCandy;
     }
 
-    public SpecialCandyGeneratorCell addSpecialCell(SpecialCandyGeneratorCell cell) {
-
-    }
 
 }

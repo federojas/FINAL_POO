@@ -15,6 +15,8 @@ public abstract class Element {
 	public boolean isSolid() {
 		return true;
 	}
+
+	public boolean isSpecialCandy() {return false;}
 	
 	public Direction[] explode() {
 		return null;

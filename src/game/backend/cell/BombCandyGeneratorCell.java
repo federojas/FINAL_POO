@@ -1,9 +1,12 @@
 package game.backend.cell;
 
 import game.backend.element.Candy;
+import game.backend.element.Element;
 import game.backend.element.TimeBombCandy;
-import game.backend.element.TimeCandy;
 import game.backend.level.Level;
+import game.backend.level.Level3;
+
+import java.sql.Time;
 
 public class BombCandyGeneratorCell extends SpecialCandyGeneratorCell{
 
@@ -13,7 +16,10 @@ public class BombCandyGeneratorCell extends SpecialCandyGeneratorCell{
     }
 
     @Override
-    protected TimeCandy getSpecialCandy(Candy base) {
-        return new TimeBombCandy(base.getColor());
+    protected Element getSpecialCandy(Candy base) {
+        TimeBombCandy result = new TimeBombCandy(base.getColor());
+        ((Level3) getGrid()).addBomb(result);
+        return result;
     }
+
 }
