@@ -25,16 +25,15 @@ public class BoardPanel extends TilePane {
 		}
 	}
 	
-	public void setImage(int row, int column, Image image) {
+	public void setImage(int row, int column, Image image,Color color) {
 		cells[row][column].setImage(image);
-	}
-	public void setGolden(int row, int column,Image image){
-		Light.Distant spotLight = new Light.Distant();
-		spotLight.setColor(Color.YELLOW);
-		spotLight.setElevation(100);
-		Lighting lighting = new Lighting(spotLight);
-		cells[row][column].setEffect(lighting);
-		setImage(row,column,image);
+		if(color!=null) {
+			Light.Distant spotLight = new Light.Distant();
+			spotLight.setColor(color);
+			spotLight.setElevation(100);
+			Lighting lighting = new Lighting(spotLight);
+			cells[row][column].setEffect(lighting);
+		}
 	}
 
 }

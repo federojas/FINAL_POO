@@ -26,7 +26,6 @@ public class GameApp extends Application {
 
 	public static void main(String[] args) {
 		launch(args);
-
 	}
 
 	@Override
@@ -82,10 +81,10 @@ public class GameApp extends Application {
 		button4.setPrefHeight(20);
 		button4.setPrefWidth(100);
 
-		button1.setOnAction(e -> openLevel(button1.getText(),primaryStage));
-		button2.setOnAction(e -> openLevel(button2.getText(), primaryStage));
-		button3.setOnAction(e -> openLevel(button3.getText(),primaryStage));
-		button4.setOnAction(e -> openLevel(button4.getText(), primaryStage));
+		button1.setOnAction(e -> openLevel(new Level1(),primaryStage));
+		button2.setOnAction(e -> openLevel(new Level2(), primaryStage));
+		button3.setOnAction(e -> openLevel(new LevelTimeTest(),primaryStage));
+		button4.setOnAction(e -> openLevel(new Level1(), primaryStage));
 
 		VBox menu = new VBox(15);
 		menu.getChildren().addAll(title,description,choose,button1,button2,button3,button4);
@@ -95,31 +94,11 @@ public class GameApp extends Application {
 
 		return new Scene(stackPane);
 	}
-	private void openLevel(String level, Stage stage){
-
-		Class levelClass;
-		switch(level){
-			case "Level 1":
-				levelClass = Level1.class;
-				levelinfo(new Level1());
-				break;
-			case "Level 2":
-				levelClass = Level2.class;
-				levelinfo(new Level2());
-				break;
-			case "Level 3":
-				levelClass = LevelTimeTest.class;
-				levelinfo(new LevelTimeTest());
-				break;
-			default:
-				levelClass = null;
-		}
-
-		CandyGame game = new CandyGame(levelClass);
+	private void openLevel(Level level, Stage stage){
+		levelinfo(level);
+		CandyGame game = new CandyGame(level);
 		Scene scene= new Scene(new CandyFrame(game));
 		stage.setScene(scene);
-
-
 	}
 	private void levelinfo(Level level){
 		Alert alert = new Alert(Alert.AlertType.INFORMATION);

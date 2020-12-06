@@ -34,7 +34,7 @@ public class Level2 extends Level {
     private void  setGoldenCol(int col){
         int newGoldenCells=0;
         for(int i = 0; i < getSize(); i++){
-            if(!g[i][col].isGolden()) {
+            if(g[i][col].color==null) {
                 g[i][col].setGolden();
                 newGoldenCells++;
             }
@@ -45,7 +45,7 @@ public class Level2 extends Level {
     private void setGoldenRow(int fil){
         int newGoldenCells=0;
         for (int i = 0; i < getSize(); i++) {
-            if (!g[fil][i].isGolden()) {
+            if (g[fil][i].color==null) {
                 g[fil][i].setGolden();
                 newGoldenCells++;
             }

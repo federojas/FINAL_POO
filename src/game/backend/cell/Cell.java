@@ -4,13 +4,15 @@ import game.backend.Grid;
 import game.backend.element.Element;
 import game.backend.element.Nothing;
 import game.backend.move.Direction;
+import javafx.scene.paint.Color;
 
 public class Cell {
 	
 	private Grid grid;
 	private Cell[] around = new Cell[Direction.values().length];
 	private Element content;
-	private boolean Golden=false;
+	public Color color;
+
 	
 	public Cell(Grid grid) {
 		this.grid = grid;
@@ -93,11 +95,8 @@ public class Cell {
 		this.content = content;
 	}
 
-	public boolean isGolden(){
-		return Golden;
-	}
 	public void setGolden(){
-		Golden=true;
+		color=Color.YELLOW;
 	}
 
 }

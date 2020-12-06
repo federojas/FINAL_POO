@@ -11,6 +11,7 @@ import javafx.geometry.Point2D;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.util.Duration;
 
 public class CandyFrame extends VBox {
@@ -46,10 +47,8 @@ public class CandyFrame extends VBox {
 						Cell cell = CandyFrame.this.game.get(i, j);
 						Element element = cell.getContent();
 						Image image = images.getImage(element);
-						if(cell.isGolden())
-							timeLine.getKeyFrames().add(new KeyFrame(frameTime, e -> boardPanel.setGolden(finalI, finalJ, image)));
-						timeLine.getKeyFrames().add(new KeyFrame(frameTime, e -> boardPanel.setImage(finalI, finalJ, null)));
-						timeLine.getKeyFrames().add(new KeyFrame(frameTime, e -> boardPanel.setImage(finalI, finalJ, image)));
+						timeLine.getKeyFrames().add(new KeyFrame(frameTime, e -> boardPanel.setImage(finalI, finalJ, null,null )));
+						timeLine.getKeyFrames().add(new KeyFrame(frameTime, e -> boardPanel.setImage(finalI, finalJ, image,cell.color)));
 					}
 					frameTime = frameTime.add(frameGap);
 				}
