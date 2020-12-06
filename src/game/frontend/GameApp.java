@@ -22,9 +22,6 @@ public class GameApp extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		primaryStage.setScene(mainMenu(primaryStage));
-
-
-
 		/*CandyGame game = new CandyGame(Level1.class);
 		CandyFrame frame = new CandyFrame(game);
 		Scene scene = new Scene(frame);
@@ -34,14 +31,14 @@ public class GameApp extends Application {
 	}
 	private Scene mainMenu(Stage primaryStage){
 		Label name= new Label("Crush Candy");
-		Button button1= new Button("Level1");
-		Button button2= new Button("Level2");
-		Button button3= new Button("Level3");
-		Button button4= new Button("Level4");
+		Button button1= new Button("Level 1");
+		Button button2= new Button("Level 2");
+		Button button3= new Button("Level 3");
+		Button button4= new Button("Level 4");
 
 		button1.setOnAction(e -> openLevel(button1.getText(),primaryStage));
 		button2.setOnAction(e -> openLevel(button2.getText(), primaryStage));
-		button3.setOnAction(e -> openLevel(button3.getText(), primaryStage));
+		button3.setOnAction(e -> openLevel(button3.getText(),primaryStage));
 		button4.setOnAction(e -> openLevel(button4.getText(), primaryStage));
 
 		VBox menu = new VBox();
@@ -49,7 +46,7 @@ public class GameApp extends Application {
 
 		return new Scene(menu);
 	}
-	private void openLevel(String level, Stage primaryStage){
+	private void openLevel(String level, Stage stage){
 
 		Class levelClass;
 		switch(level){
@@ -60,6 +57,7 @@ public class GameApp extends Application {
 				levelClass = Level2.class;
 				break;
 			case "Level 3":
+
 				levelClass = LevelTimeTest.class;
 				break;
 			default:
@@ -67,13 +65,8 @@ public class GameApp extends Application {
 		}
 
 		CandyGame game = new CandyGame(levelClass);
-
-
 		Scene scene= new Scene(new CandyFrame(game));
-		primaryStage.setScene(scene);
-
-
-
+		stage.setScene(scene);
 	}
 
 }
