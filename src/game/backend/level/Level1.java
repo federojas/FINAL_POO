@@ -16,6 +16,8 @@ public class Level1 extends Level {
 		return new Level1State(REQUIRED_SCORE, MAX_MOVES);
 	}
 
+
+
 	
 	@Override
 	public boolean tryMove(int i1, int j1, int i2, int j2) {

@@ -2,6 +2,7 @@ package game.backend.level;
 
 import game.backend.cell.BombCandyGeneratorCell;
 import game.backend.cell.SpecialCandyGeneratorCell;
+import game.backend.element.TimeCandy;
 
 public abstract class SpecialCandyLevel extends Level {
     private int maxSpecialCandy;

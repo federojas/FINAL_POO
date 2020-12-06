@@ -12,9 +12,13 @@ public class Level3Cell extends Cell {
 
     @Override
     public void clearContent() {
-        Element current = getContent();
-        if(current.isSpecialCandy())
-            ((Level3) getGrid()).deactivateBomb((TimeBombCandy) current);
         super.clearContent();
+        Element current = getContent();
+        System.out.println(current.isSpecialCandy());
+        if(current.isSpecialCandy()) {
+            System.out.println("entre");
+            ((Level3) getGrid()).deactivateBomb((TimeBombCandy) current);
+        }
+
     }
 }

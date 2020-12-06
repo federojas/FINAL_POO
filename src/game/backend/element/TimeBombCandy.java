@@ -31,20 +31,9 @@ public class TimeBombCandy extends TimeCandy {
     public void activate() {
         isActive = true;
     }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof TimeBombCandy)) return false;
-        TimeBombCandy aux = (TimeBombCandy) o;
-        return id == aux.id;
+    public boolean equalsId(TimeBombCandy other){
+        return id==other.id;
     }
-
-    @Override
-    public int hashCode() { //Implementado por buena practica, no es necesario para arraylist
-        return Objects.hash(id);
-    }
-
     @Override
     public String getTimeInfo() {
         return String.valueOf(getTime());

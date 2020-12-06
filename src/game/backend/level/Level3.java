@@ -11,11 +11,12 @@ import game.backend.element.TimeBombCandy;
 
 import java.sql.Time;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class Level3 extends SpecialCandyLevel {
 
-    private static int MAX_BOMBS = 10;
+    private static int MAX_BOMBS = 2;
     private static int TIMER = 10;
     private static double BOMB_SPAWN_RATE = 0.05;
 
@@ -42,6 +43,7 @@ public class Level3 extends SpecialCandyLevel {
     @Override
     public boolean tryMove(int i1, int j1, int i2, int j2) {
         boolean result = super.tryMove(i1, j1, i2, j2);
+        //System.out.println(result);
         if (result) {
             ((Level3State) state()).addMove();
             wasUpdated();
@@ -65,8 +67,16 @@ public class Level3 extends SpecialCandyLevel {
         }
 
         public void bombDeactivated(TimeBombCandy bomb) {
-            currentBombs.remove(bomb);
-            bombsDeactivated++;
+            bombsDeactivated+=1;
+            Iterator<TimeBombCandy> timeBombCandyIterator = currentBombs.iterator();
+            while(timeBombCandyIterator.hasNext()) {
+                if(bomb.equalsId(timeBombCandyIterator.next())){
+                    timeBombCandyIterator.remove();
+                    break;
+                }
+            }
+
+
         }
 
         public void addBomb(TimeBombCandy bomb) {
@@ -94,6 +104,7 @@ public class Level3 extends SpecialCandyLevel {
 
         @Override
         public boolean playerWon() {
+            System.out.println(bombsDeactivated);
             return bombsDeactivated == MAX_BOMBS;
         }
 
