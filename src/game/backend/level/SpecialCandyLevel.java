@@ -1,5 +1,8 @@
 package game.backend.level;
 
+import game.backend.cell.BombCandyGeneratorCell;
+import game.backend.cell.SpecialCandyGeneratorCell;
+
 public abstract class SpecialCandyLevel extends Level {
     private int maxSpecialCandy;
     private int currentSpecialCandy = 0;
@@ -15,6 +18,10 @@ public abstract class SpecialCandyLevel extends Level {
 
     public boolean reachedMax() {
         return maxSpecialCandy == currentSpecialCandy;
+    }
+
+    public SpecialCandyGeneratorCell addSpecialCell(SpecialCandyGeneratorCell cell) {
+
     }
 
 }

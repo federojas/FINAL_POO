@@ -2,6 +2,7 @@ package game.backend.cell;
 
 import game.backend.element.Candy;
 import game.backend.element.Element;
+import game.backend.element.TimeCandy;
 import game.backend.level.Level;
 import game.backend.level.SpecialCandyLevel;
 
@@ -23,6 +24,6 @@ public abstract class SpecialCandyGeneratorCell extends CandyGeneratorCell {
         return result;
     }
 
-    protected abstract Element getSpecialCandy( Candy base );
+    protected abstract TimeCandy getSpecialCandy(Candy base);
 
 }

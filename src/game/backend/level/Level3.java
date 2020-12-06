@@ -3,8 +3,12 @@ package game.backend.level;
 import game.backend.GameState;
 import game.backend.Grid;
 import game.backend.cell.BombCandyGeneratorCell;
+import game.backend.cell.Cell;
+import game.backend.cell.SpecialCandyGeneratorCell;
+import game.backend.element.Element;
 import game.backend.element.TimeBombCandy;
 
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,6 +21,7 @@ public class Level3 extends SpecialCandyLevel {
 
     public Level3(){
         super(MAX_BOMBS);
+
     }
 
     @Override
@@ -26,8 +31,7 @@ public class Level3 extends SpecialCandyLevel {
 
     @Override
     protected void fillCells() {
-        //COMO AGREGAMOS A LA GRILLA?
-        //new BombCandyGeneratorCell(this, BOMB_SPAWN_RATE));
+
         super.fillCells();
     }
 
@@ -44,7 +48,7 @@ public class Level3 extends SpecialCandyLevel {
     public void deactivateBomb(){ ((Level3State) state()).bombDeactivated(); }
 
 
-    private class Level3State extends GameState {
+    protected class Level3State extends GameState {
 
         private List<TimeBombCandy> currentBombs = new ArrayList<>();
         private long bombsDeactivated=0;
@@ -59,7 +63,7 @@ public class Level3 extends SpecialCandyLevel {
         public  void addMove() {
             super.addMove();
             for(TimeBombCandy candy : currentBombs) {
-                candy.decreaseTimer();
+                    candy.decreaseTimer();
             }
             checkBomb();
         }
@@ -74,7 +78,7 @@ public class Level3 extends SpecialCandyLevel {
 
         @Override
         public boolean playerWon() {
-            return return bombsDeactivated == MAX_BOMBS;
+            return bombsDeactivated == MAX_BOMBS;
         }
 
     }
