@@ -9,9 +9,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.BackgroundImage;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
@@ -30,21 +28,20 @@ public class GameApp extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		primaryStage.setScene(mainMenu(primaryStage));
-		/*CandyGame game = new CandyGame(Level1.class);
-		CandyFrame frame = new CandyFrame(game);
-		Scene scene = new Scene(frame);
-		primaryStage.setResizable(false);
-		primaryStage.setScene(scene);*/
 		primaryStage.setY(30);
 		primaryStage.setX(350);
 		primaryStage.setResizable(false);
 		primaryStage.setTitle("Crush Candy");
-		primaryStage.getIcons().add(new Image("images/icono_candy.jpg"));
+		primaryStage.getIcons().add(new Image("images/icono_candy.png"));
 		primaryStage.show();
 	}
 	private Scene mainMenu(Stage primaryStage){
 		Label title= new Label("Crush Candy");
-		title.setFont(new Font("Roboto",24));
+		title.setFont(new Font("Roboto",30));
+		Label description= new Label("Welcome to the most flexible Candy Crush of all times!!");
+		description.setFont(new Font("Roboto",20));
+		Label choose =new Label("Choose your level please");
+		choose.setFont(new Font("Roboto",15));
 		Button button1= new Button("Level 1");
 		Button button2= new Button("Level 2");
 		Button button3= new Button("Level 3");
@@ -56,7 +53,7 @@ public class GameApp extends Application {
 		button4.setOnAction(e -> openLevel(button4.getText(), primaryStage));
 
 		VBox menu = new VBox(20);
-		menu.getChildren().addAll(title,new Label("Welcome to the most flexible Candy Crush of all times!!"),new Label("Choose your level please"),button1,button2,button3,button4);
+		menu.getChildren().addAll(title,description,choose,button1,button2,button3,button4);
 		menu.setPrefSize(600,400);
 		menu.setAlignment(Pos.CENTER);
 		return new Scene(menu);
