@@ -86,7 +86,7 @@ public class GameApp extends Application {
 
 		VBox menu = new VBox(15);
 		menu.getChildren().addAll(title,description,choose,button1,button2,button3,button4);
-		menu.setPrefSize(600,400);
+		menu.setPrefSize(600,500);
 		menu.setAlignment(Pos.CENTER);
 		StackPane stackPane= new StackPane(new ImageView(new Image("images/fondo.jpg")),menu);
 
