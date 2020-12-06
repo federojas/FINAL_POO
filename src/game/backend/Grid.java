@@ -18,9 +18,7 @@ import java.util.Map;
 public abstract class Grid {
 	
 	public static final int SIZE = 9;
-	private Level3Cell[][] g = new Level3Cell[SIZE][SIZE];
-
-//	private Cell[][] g = new Cell[SIZE][SIZE];
+	private Cell[][] g = new Cell[SIZE][SIZE];
 	private Map<Cell, Point> gMap = new HashMap<>();
 	private GameState state;
 	private List<GameListener> listeners = new ArrayList<>();
@@ -33,7 +31,11 @@ public abstract class Grid {
 	protected Cell[][] g() {
 		return g;
 	}
-	
+	protected void setCell(int i, int j){
+		g[i][j]=new Cell(this);
+	}
+
+
 	protected GameState state(){
 		return state;
 	}
@@ -43,8 +45,7 @@ public abstract class Grid {
 		figureDetector = new FigureDetector(this);
 		for (int i = 0; i < SIZE; i++) {
 			for (int j = 0; j < SIZE; j++) {
-				g[i][j] = new Level3Cell(this);
-				//g[i][j] = new Cell(this);
+				setCell(i,j);
 				gMap.put(g[i][j], new Point(i,j));
 			}
 		}

@@ -2,10 +2,7 @@ package game.backend.level;
 
 import game.backend.GameState;
 import game.backend.Grid;
-import game.backend.cell.BombCandyGeneratorCell;
-import game.backend.cell.CandyGeneratorCell;
-import game.backend.cell.Cell;
-import game.backend.cell.SpecialCandyGeneratorCell;
+import game.backend.cell.*;
 import game.backend.element.Element;
 import game.backend.element.TimeBombCandy;
 
@@ -16,7 +13,7 @@ import java.util.List;
 
 public class Level3 extends SpecialCandyLevel {
 
-    private static int MAX_BOMBS = 2;
+    private static int MAX_BOMBS = 10;
     private static int TIMER = 10;
     private static double BOMB_SPAWN_RATE = 0.05;
 
@@ -43,7 +40,6 @@ public class Level3 extends SpecialCandyLevel {
     @Override
     public boolean tryMove(int i1, int j1, int i2, int j2) {
         boolean result = super.tryMove(i1, j1, i2, j2);
-        //System.out.println(result);
         if (result) {
             ((Level3State) state()).addMove();
             wasUpdated();
@@ -51,8 +47,13 @@ public class Level3 extends SpecialCandyLevel {
         return result;
     }
 
-    public void deactivateBomb(TimeBombCandy bomb){ ((Level3State) state()).bombDeactivated(bomb); }
 
+    public void deactivateBomb(TimeBombCandy bomb){ ((Level3State) state()).bombDeactivated(bomb); }
+    @Override
+    protected void setCell(int i, int j) {
+        Cell[][] current=g();
+        current[i][j]= new Level3Cell(this);
+    }
 
     protected class Level3State extends GameState {
 
@@ -79,6 +80,7 @@ public class Level3 extends SpecialCandyLevel {
 
         }
 
+
         public void addBomb(TimeBombCandy bomb) {
             currentBombs.add(bomb);
         }
@@ -104,7 +106,7 @@ public class Level3 extends SpecialCandyLevel {
 
         @Override
         public boolean playerWon() {
-            System.out.println(bombsDeactivated);
+
             return bombsDeactivated == MAX_BOMBS;
         }
 
