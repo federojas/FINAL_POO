@@ -62,4 +62,8 @@ public class CandyGame implements GameListener {
 		//
 	}
 
+	public String getStateMessage() {
+		return state.toString();
+	}
+
 }

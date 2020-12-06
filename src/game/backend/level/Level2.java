@@ -25,9 +25,10 @@ public class Level2 extends Level {
         }
         return ret;
     }
+
     private void  setGoldenCol(int col){
         int newGoldenCells=0;
-        for(int i=0; i< getSize();i++){
+        for(int i = 0; i < getSize(); i++){
             if(!g[i][col].isGolden()) {
                 g[i][col].setGolden();
                 newGoldenCells++;
@@ -35,6 +36,7 @@ public class Level2 extends Level {
         }
         ((Level2State)state()).addGoldenCells(newGoldenCells);
     }
+
     private void setGoldenRow(int fil){
         int newGoldenCells=0;
         for (int i = 0; i < getSize(); i++) {
@@ -45,6 +47,7 @@ public class Level2 extends Level {
         }
         ((Level2State)state()).addGoldenCells(newGoldenCells);
     }
+
     private class Level2State extends GameState {
         private long maxMoves;
         private long goldenCells;
@@ -65,6 +68,15 @@ public class Level2 extends Level {
 
         public void addGoldenCells(int newGoldenCells) {
             this.goldenCells += newGoldenCells;
+        }
+
+        @Override
+        public String toString() {
+            return String.format("%s \t Remaining golden cells: %d", super.toString(), getGoldenLeftToWin());
+        }
+
+        public long getGoldenLeftToWin () {
+            return getSize()*getSize() - goldenCells;
         }
     }
 }
