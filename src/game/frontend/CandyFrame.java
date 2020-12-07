@@ -37,7 +37,7 @@ public class CandyFrame extends VBox {
 			@Override
 			public void gridUpdated() {
 				Timeline timeLine = new Timeline();
-				Duration frameGap = Duration.millis(100);
+				Duration frameGap = Duration.millis(50);
 				Duration frameTime = Duration.ZERO;
 				for (int i = game().getSize() - 1; i >= 0; i--) {
 					for (int j = game().getSize() - 1; j >= 0; j--) {
@@ -46,20 +46,19 @@ public class CandyFrame extends VBox {
 						Cell cell = CandyFrame.this.game.get(i, j);
 						Element element = cell.getContent();
 						Image image = images.getImage(element);
-						timeLine.getKeyFrames().add(new KeyFrame(frameTime, e -> boardPanel.setImage(finalI, finalJ, null)));
-						timeLine.getKeyFrames().add(new KeyFrame(frameTime, e -> boardPanel.setImage(finalI, finalJ, image)));
+						timeLine.getKeyFrames().add(new KeyFrame(frameTime, e -> boardPanel.setImage(finalI, finalJ, null,null )));
+						timeLine.getKeyFrames().add(new KeyFrame(frameTime, e -> boardPanel.setImage(finalI, finalJ, image,cell.getColor())));
 					}
 					frameTime = frameTime.add(frameGap);
 				}
 				timeLine.play();
 			}
 			@Override
-			public void cellExplosion(Element e) {
-				//
-			}
+			public void cellExplosion(Element e) {}
 		});
 
 		listener.gridUpdated();
+		scorePanel.updateScore(game().getStateMessage());
 
 		addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
 			if (lastPoint == null) {
@@ -70,12 +69,13 @@ public class CandyFrame extends VBox {
 				if (newPoint != null) {
 					System.out.println("Get second = " +  newPoint);
 					game().tryMove((int)lastPoint.getX(), (int)lastPoint.getY(), (int)newPoint.getX(), (int)newPoint.getY());
-					String message = ((Long)game().getScore()).toString();
+					String message = game().getStateMessage();
 					if (game().isFinished()) {
 						if (game().playerWon()) {
-							message = message + " Finished - Player Won!";
+							message =  " Finished - Player Won!";
 						} else {
-							message = message + " Finished - Loser !";
+							message =  " Finished - Loser !";
+
 						}
 					}
 					scorePanel.updateScore(message);

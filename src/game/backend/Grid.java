@@ -17,7 +17,7 @@ public abstract class Grid {
 	
 	public static final int SIZE = 9;
 
-	private Cell[][] g = new Cell[SIZE][SIZE];
+	protected Cell[][] g = new Cell[SIZE][SIZE];
 	private Map<Cell, Point> gMap = new HashMap<>();
 	private GameState state;
 	private List<GameListener> listeners = new ArrayList<>();
@@ -26,6 +26,7 @@ public abstract class Grid {
 	
 	protected abstract GameState newState();
 	protected abstract void fillCells();
+	public abstract String information();
 	
 	protected Cell[][] g() {
 		return g;
@@ -148,5 +149,9 @@ public abstract class Grid {
 			gl.cellExplosion(e);
 		}
 	}
+
+	public int getSize() { return SIZE; }
+
+
 
 }

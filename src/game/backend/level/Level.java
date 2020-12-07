@@ -6,6 +6,7 @@ import game.backend.cell.Cell;
 import game.backend.element.Wall;
 
 public abstract class Level extends Grid {
+
     private Cell wallCell;
     private Cell candyGenCell;
 
@@ -44,5 +45,10 @@ public abstract class Level extends Grid {
                 g()[i][j].setAround(g()[i-1][j],g()[i+1][j],g()[i][j-1],g()[i][j+1]);
             }
         }
+    }
+
+    @Override
+    public String toString() {
+        return information();
     }
 }

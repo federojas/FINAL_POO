@@ -10,7 +10,7 @@ public class ScorePanel extends BorderPane {
 
 	public ScorePanel() {
 		setStyle("-fx-background-color: #5490ff");
-		scoreLabel = new Label("0");
+		scoreLabel = new Label("Score: 0");
 		scoreLabel.setAlignment(Pos.CENTER);
 		scoreLabel.setStyle("-fx-font-size: 24");
 		setCenter(scoreLabel);
@@ -19,5 +19,4 @@ public class ScorePanel extends BorderPane {
 	public void updateScore(String text) {
 		scoreLabel.setText(text);
 	}
-
 }
