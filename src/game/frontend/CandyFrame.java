@@ -7,11 +7,19 @@ import game.backend.element.Element;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.application.Platform;
 import javafx.geometry.Point2D;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonBar;
+import javafx.scene.control.ButtonType;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import javafx.util.Duration;
+
+import java.util.Optional;
 
 public class CandyFrame extends VBox {
 
@@ -77,12 +85,14 @@ public class CandyFrame extends VBox {
 					game().tryMove((int)lastPoint.getX(), (int)lastPoint.getY(), (int)newPoint.getX(), (int)newPoint.getY());
 					String message = game().getStateMessage();
 					if (game().isFinished()) {
+						boolean won=false;
 						if (game().playerWon()) {
 							message =  " Finished - Player Won!";
+							won=true;
 						} else {
 							message =  " Finished - Loser !";
-
 						}
+						finishAlert(won);
 					}
 					scorePanel.updateScore(message);
 					lastPoint = null;
@@ -100,6 +110,30 @@ public class CandyFrame extends VBox {
 		double i = x / CELL_SIZE;
 		double j = y / CELL_SIZE;
 		return (i >= 0 && i < game.getSize() && j >= 0 && j < game.getSize()) ? new Point2D(j, i) : null;
+	}
+	private void finishAlert(boolean won ){
+		ButtonType playAgain = new ButtonType("Play Again");
+		ButtonType exit = new ButtonType("Exit");
+		Alert alert = new Alert(Alert.AlertType.INFORMATION,"",playAgain,exit);
+		alert.setTitle("Game Finished");
+		if(won) {
+			alert.setContentText("You Won!!");
+		}else{
+			alert.setContentText("You Lost :(");
+		}
+		alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
+
+		Optional<ButtonType> result= alert.showAndWait();
+		ButtonType button = result.orElse(ButtonType.CANCEL);
+
+		if(button.getButtonData()== ButtonBar.ButtonData.OTHER){
+			new GameApp().start((Stage)CandyFrame.this.getScene().getWindow());
+		}else{
+			Platform.exit();
+		}
+
+
+
 	}
 
 }
