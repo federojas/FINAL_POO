@@ -48,9 +48,18 @@ public class Level3 extends SpecialCandyLevel {
         }
         return result;
     }
+    @Override
+    public void initialize() {
+        super.initialize();
+        activateInitialBombs();
+    }
 
 
     public void deactivateBomb(TimeBombCandy bomb){ ((Level3State) state()).bombDeactivated(bomb); }
+
+    private void activateInitialBombs() {
+        ((Level3State) state()).activateInitialBombs();
+    }
 
     @Override
     protected void setCell(int i, int j) {
@@ -75,6 +84,12 @@ public class Level3 extends SpecialCandyLevel {
             }
         }
 
+        public void activateInitialBombs() {
+            for(TimeBombCandy bomb : currentBombs) {
+                bomb.activate();
+            }
+        }
+
 
         public void addBomb(TimeBombCandy bomb) {
             currentBombs.add(bomb);
@@ -84,8 +99,9 @@ public class Level3 extends SpecialCandyLevel {
         public void addMove() {
             super.addMove();
             for(TimeBombCandy candy : currentBombs) {
-                if(gridFormed())
+                if(candy.isActive())
                     candy.decreaseTimer();
+                candy.activate();
             }
             checkBomb();
         }
@@ -97,7 +113,7 @@ public class Level3 extends SpecialCandyLevel {
 
         @Override
         public String toString() {
-            return super.toString()+"\tRemaining moves: " + currentBombs.get(0).getTime();
+            return super.toString()+"\tRemaining moves: " + ( currentBombs.isEmpty() ? "No active bombs" : currentBombs.get(0).getTime());
         }
 
     }

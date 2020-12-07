@@ -39,6 +39,7 @@ public abstract class SpecialCandyLevel extends Level {
 
         public void specialEliminated() {
             specialsEliminated++;
+            System.out.println(specialsEliminated);
         }
 
         public void lostGame() {

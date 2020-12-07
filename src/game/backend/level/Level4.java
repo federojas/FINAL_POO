@@ -15,7 +15,7 @@ public class Level4 extends SpecialCandyLevel {
 
     private static final int MAX_BONUS_CANDY = 10;
     private static final int TIMER = 60;
-    private static final double BONUS_CANDY_RATE = 0.10;
+    private static final double BONUS_CANDY_RATE = 0.08;
     private static final int BONUS_TIME = 10;
 
 
