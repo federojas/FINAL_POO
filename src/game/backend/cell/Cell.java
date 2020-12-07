@@ -11,7 +11,7 @@ public class Cell {
 	private Grid grid;
 	private Cell[] around = new Cell[Direction.values().length];
 	private Element content;
-	public Color color;
+	private Color color;
 
 	
 	public Cell(Grid grid) {
@@ -97,6 +97,9 @@ public class Cell {
 
 	public void setGolden(){
 		color=Color.YELLOW;
+	}
+	public Color getColor(){
+		return color;
 	}
 
 }
