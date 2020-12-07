@@ -34,7 +34,7 @@ public abstract class SpecialCandyLevel extends Level {
 
         @Override
         public boolean playerWon() {
-            return !gameLost && specialsEliminated == maxSpecialCandy;
+            return specialsEliminated == maxSpecialCandy;
         }
 
         public void specialEliminated() {

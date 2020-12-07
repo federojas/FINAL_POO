@@ -4,7 +4,6 @@ import game.backend.GameState;
 import game.backend.cell.*;
 import game.backend.element.TimeBombCandy;
 
-
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -23,6 +22,16 @@ public class Level3 extends SpecialCandyLevel {
     @Override
     public String information() {
         return "Special bomb candies will appear on screen with counters attached. Destroy all bombs before their counters reach zero!";
+    }
+
+    @Override
+    public void initialize() {
+       super.initialize();
+       activateInitialBombs(); //activa las bombas iniciales de la grilla
+    }
+
+    public void activateInitialBombs() {
+        ((Level3State) state()).activateInitialBombs();
     }
 
     @Override
@@ -89,7 +98,7 @@ public class Level3 extends SpecialCandyLevel {
         public void addMove() {
             super.addMove();
             for(TimeBombCandy candy : currentBombs) {
-                if(candy.isActivated())
+                if(candy.isActivated()) //previene que se bajen la cantidad de vidas de las bombas que spawnean nuevas
                     candy.decreaseTimer();
                 candy.activate();
             }
