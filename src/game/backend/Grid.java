@@ -1,6 +1,8 @@
 package game.backend;
 
 import game.backend.cell.Cell;
+import game.backend.cell.Level3Cell;
+import game.backend.cell.SpecialCandyGeneratorCell;
 import game.backend.element.Candy;
 import game.backend.element.CandyColor;
 import game.backend.element.Element;
@@ -16,23 +18,32 @@ import java.util.Map;
 public abstract class Grid {
 	
 	public static final int SIZE = 9;
-
 	private Cell[][] g = new Cell[SIZE][SIZE];
 	private Map<Cell, Point> gMap = new HashMap<>();
 	private GameState state;
 	private List<GameListener> listeners = new ArrayList<>();
 	private MoveMaker moveMaker;
 	private FigureDetector figureDetector;
+	private boolean gridFormed = false;
 	
 	protected abstract GameState newState();
 	protected abstract void fillCells();
+	public abstract String information();
 	
 	protected Cell[][] g() {
 		return g;
 	}
-	
+	protected void setCell(int i, int j){
+		g[i][j]=new Cell(this);
+	}
+
+
 	protected GameState state(){
 		return state;
+	}
+
+	public boolean gridFormed() {
+		return gridFormed;
 	}
 	
 	public void initialize() {
@@ -40,12 +51,13 @@ public abstract class Grid {
 		figureDetector = new FigureDetector(this);
 		for (int i = 0; i < SIZE; i++) {
 			for (int j = 0; j < SIZE; j++) {
-				g[i][j] = new Cell(this);
+				setCell(i,j);
 				gMap.put(g[i][j], new Point(i,j));
 			}
 		}
 		fillCells();
 		fallElements();
+		gridFormed = true;
 	}	
 
 	public Element get(int i, int j) {

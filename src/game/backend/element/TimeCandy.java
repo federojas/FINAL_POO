@@ -8,12 +8,18 @@ public abstract class TimeCandy extends Candy{
         this.time = time;
     }
 
-    @Override
-    public boolean isObjective() {
-        return true;
-    }
-
     public int getTime() {
         return time;
     }
+
+    public void setTime(int time) {
+        this.time = time;
+    }
+
+    public abstract String getTimeInfo();
+
+    public boolean isSpecialCandy() {
+        return true;
+    }
+
 }

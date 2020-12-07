@@ -3,18 +3,19 @@ package game.backend.level;
 import game.backend.Grid;
 import game.backend.cell.CandyGeneratorCell;
 import game.backend.cell.Cell;
+import game.backend.cell.SpecialCandyGeneratorCell;
 import game.backend.element.Wall;
 
 public abstract class Level extends Grid {
     private Cell wallCell;
-    private Cell candyGenCell;
+    private CandyGeneratorCell candyGenCell;
 
     @Override
     protected void fillCells() {
 
         wallCell = new Cell(this);
         wallCell.setContent(new Wall());
-        candyGenCell = new CandyGeneratorCell(this);
+        candyGenCell = generateCandyCell();
 
         //corners
         g()[0][0].setAround(candyGenCell, g()[1][0], wallCell, g()[0][1]);
@@ -45,4 +46,12 @@ public abstract class Level extends Grid {
             }
         }
     }
+
+    public abstract CandyGeneratorCell generateCandyCell();
+
+    @Override
+    public String toString() {
+        return information();
+    }
+
 }

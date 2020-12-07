@@ -15,6 +15,8 @@ public abstract class Element {
 	public boolean isSolid() {
 		return true;
 	}
+
+	public boolean isSpecialCandy() {return false;}
 	
 	public Direction[] explode() {
 		return null;
@@ -22,10 +24,6 @@ public abstract class Element {
 	
 	public long getScore() {
 		return 0;
-	}
-
-	public boolean isObjective(){
-		return false;
 	}
 	
 }
