@@ -16,9 +16,11 @@ public class Level1 extends Level {
 		return new Level1State(REQUIRED_SCORE, MAX_MOVES);
 	}
 
+	@Override
+	public String information() {
+		return "You have to achieve "+REQUIRED_SCORE+" points in "+MAX_MOVES+" moves";
+	}
 
-
-	
 	@Override
 	public boolean tryMove(int i1, int j1, int i2, int j2) {
 		boolean ret;
