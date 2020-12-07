@@ -57,8 +57,6 @@ public class CandyFrame extends VBox {
 						Cell cell = CandyFrame.this.game.get(i, j);
 						Element element = cell.getContent();
 						Image image = images.getImage(element);
-/*
-						timeLine.getKeyFrames().add(new KeyFrame(frameTime, e -> boardPanel.setImage(finalI, finalJ, null, null,null)));*/
 						timeLine.getKeyFrames().add(new KeyFrame(frameTime, e -> boardPanel.setImage(finalI, finalJ, image, cell.getColor(),cell.getFrontText())));
 					}
 					frameTime = frameTime.add(frameGap);
@@ -75,7 +73,7 @@ public class CandyFrame extends VBox {
 		});
 
 		listener.gridUpdated();
-		scorePanel.updateScore(game().getStateMessage());
+		listener.updateScorePanel();
 
 		addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
 			if (lastPoint == null) {
@@ -88,10 +86,10 @@ public class CandyFrame extends VBox {
 					game().tryMove((int)lastPoint.getX(), (int)lastPoint.getY(), (int)newPoint.getX(), (int)newPoint.getY());
 					String message = game().getStateMessage();
 					if (game().isFinished()) {
-						boolean won=false;
+						boolean won = false;
 						if (game().playerWon()) {
 							message =  " Finished - Player Won!";
-							won=true;
+							won = true;
 						} else {
 							message =  " Finished - Loser !";
 						}
@@ -114,29 +112,27 @@ public class CandyFrame extends VBox {
 		double j = y / CELL_SIZE;
 		return (i >= 0 && i < game.getSize() && j >= 0 && j < game.getSize()) ? new Point2D(j, i) : null;
 	}
-	private void finishAlert(boolean won ){
-		ButtonType playAgain = new ButtonType("Play Again");
+	private void finishAlert(boolean won){
+		String playAgainText = "Play Again";
+		ButtonType playAgain = new ButtonType(playAgainText);
 		ButtonType exit = new ButtonType("Exit");
-		Alert alert = new Alert(Alert.AlertType.INFORMATION,"",playAgain,exit);
+		Alert alert = new Alert(Alert.AlertType.INFORMATION,"", playAgain, exit);
 		alert.setTitle("Game Finished");
 		if(won) {
 			alert.setContentText("You Won!!");
 		}else{
 			alert.setContentText("You Lost :(");
 		}
-		alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
-
-		Optional<ButtonType> result= alert.showAndWait();
+		/*alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
+*/
+		Optional<ButtonType> result = alert.showAndWait();
 		ButtonType button = result.orElse(ButtonType.CANCEL);
 
-		if(button.getButtonData()== ButtonBar.ButtonData.OTHER){
-			new GameApp().start((Stage)CandyFrame.this.getScene().getWindow());
-		}else{
+		if(button.getText().equals(playAgainText)) {
+			new GameApp().start((Stage)getScene().getWindow());
+	    } else {
 			Platform.exit();
 		}
-
-
-
 	}
 
 }
