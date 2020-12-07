@@ -66,7 +66,8 @@ public class Level4 extends SpecialCandyLevel {
                             if (countdown == 0)
                                 timeUp();
                             wasUpdated();
-                            updateScorePanel();
+                            if(countdown>=0)
+                                updateScorePanel();
                         }
                     });
                 }
