@@ -41,7 +41,7 @@ public class Level4 extends SpecialCandyLevel {
 
     public void removeTimeBonusCandy(TimeBonusCandy candy) {
         if(gridFormed())
-            ((Level4.Level4State) state()).removeBonusTimeCandy(candy);
+            ((Level4State) state()).removeBonusTimeCandy(candy);
     }
 
     @Override
@@ -51,7 +51,7 @@ public class Level4 extends SpecialCandyLevel {
     }
 
 
-    protected class Level4State extends TimeState {
+    private class Level4State extends TimeState {
         private int countdown = TIMER;
 
         public Level4State() {
