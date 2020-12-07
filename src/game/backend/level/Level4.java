@@ -21,6 +21,11 @@ public class Level4 extends SpecialCandyLevel {
     }
 
     @Override
+    public String information() {
+        return "Special time bonus candy will appear, destroy them all before the counter reaches zero!";
+    }
+
+    @Override
     protected GameState newState() {
         return new Level4State();
     }

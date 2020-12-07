@@ -21,6 +21,11 @@ public class Level3 extends SpecialCandyLevel {
     }
 
     @Override
+    public String information() {
+        return "Special bomb candies will appear on screen with counters attached. Destroy all bombs before their counters reach zero!";
+    }
+
+    @Override
     protected GameState newState() {
         return new Level3State();
     }
