@@ -5,7 +5,6 @@ import game.backend.GameListener;
 import game.backend.cell.Cell;
 import game.backend.element.Element;
 
-import game.backend.element.TimeCandy;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.geometry.Point2D;
@@ -38,7 +37,7 @@ public class CandyFrame extends VBox {
 			@Override
 			public void gridUpdated() {
 				Timeline timeLine = new Timeline();
-				Duration frameGap = Duration.millis(100);
+				Duration frameGap = Duration.millis(50);
 				Duration frameTime = Duration.ZERO;
 				for (int i = game().getSize() - 1; i >= 0; i--) {
 					for (int j = game().getSize() - 1; j >= 0; j--) {
@@ -48,25 +47,19 @@ public class CandyFrame extends VBox {
 						Element element = cell.getContent();
 						Image image = images.getImage(element);
 
-						String frontText = null;
-						if (element.isSpecialCandy())
-							frontText = ((TimeCandy) element).getTimeInfo();
-
-						timeLine.getKeyFrames().add(new KeyFrame(frameTime, e -> boardPanel.setImage(finalI, finalJ, null, null)));
-						String finalFrontText = frontText; //(Variable used in lambda expression should be final or effectively final)
-						timeLine.getKeyFrames().add(new KeyFrame(frameTime, e -> boardPanel.setImage(finalI, finalJ, image, finalFrontText)));
+						timeLine.getKeyFrames().add(new KeyFrame(frameTime, e -> boardPanel.setImage(finalI, finalJ, null, null,null)));
+						timeLine.getKeyFrames().add(new KeyFrame(frameTime, e -> boardPanel.setImage(finalI, finalJ, image, cell.getColor(),cell.getFrontText())));
 					}
 					frameTime = frameTime.add(frameGap);
 				}
 				timeLine.play();
 			}
 			@Override
-			public void cellExplosion(Element e) {
-				//
-			}
+			public void cellExplosion(Element e) {}
 		});
 
 		listener.gridUpdated();
+		scorePanel.updateScore(game().getStateMessage());
 
 		addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
 			if (lastPoint == null) {
@@ -77,12 +70,13 @@ public class CandyFrame extends VBox {
 				if (newPoint != null) {
 					System.out.println("Get second = " +  newPoint);
 					game().tryMove((int)lastPoint.getX(), (int)lastPoint.getY(), (int)newPoint.getX(), (int)newPoint.getY());
-					String message = ((Long)game().getScore()).toString();
+					String message = game().getStateMessage();
 					if (game().isFinished()) {
 						if (game().playerWon()) {
-							message = message + " Finished - Player Won!";
+							message =  " Finished - Player Won!";
 						} else {
-							message = message + " Finished - Loser !";
+							message =  " Finished - Loser !";
+
 						}
 					}
 					scorePanel.updateScore(message);

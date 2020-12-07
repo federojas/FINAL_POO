@@ -1,6 +1,7 @@
 package game.backend.element;
 
 public class TimeBombCandy extends TimeCandy {
+
     private int id;
     private static int currentId = 0;
 

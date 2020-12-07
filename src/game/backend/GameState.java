@@ -29,4 +29,8 @@ public abstract class GameState {
 		return String.format("Score: %d", getScore());
 	}
 
+	@Override
+	public String toString() {
+		return String.format("Score: %d", getScore());
+	}
 }
