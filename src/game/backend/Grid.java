@@ -24,6 +24,7 @@ public abstract class Grid {
 	private List<GameListener> listeners = new ArrayList<>();
 	private MoveMaker moveMaker;
 	private FigureDetector figureDetector;
+	private boolean gridFormed = false;
 	
 	protected abstract GameState newState();
 	protected abstract void fillCells();
@@ -40,6 +41,10 @@ public abstract class Grid {
 	protected GameState state(){
 		return state;
 	}
+
+	public boolean gridFormed() {
+		return gridFormed;
+	}
 	
 	public void initialize() {
 		moveMaker = new MoveMaker(this);
@@ -52,6 +57,7 @@ public abstract class Grid {
 		}
 		fillCells();
 		fallElements();
+		gridFormed = true;
 	}	
 
 	public Element get(int i, int j) {

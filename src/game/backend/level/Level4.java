@@ -2,9 +2,12 @@ package game.backend.level;
 
 import game.backend.GameState;
 import game.backend.cell.*;
+import game.backend.element.TimeBombCandy;
 import game.backend.element.TimeBonusCandy;
 import javafx.application.Platform;
 
+import java.sql.Time;
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -37,7 +40,8 @@ public class Level4 extends SpecialCandyLevel {
 
 
     public void removeTimeBonusCandy(TimeBonusCandy candy) {
-        ((Level4.Level4State) state()).removeBonusTimeCandy(candy);
+        if(gridFormed())
+            ((Level4.Level4State) state()).removeBonusTimeCandy(candy);
     }
 
     @Override
@@ -49,6 +53,7 @@ public class Level4 extends SpecialCandyLevel {
 
     protected class Level4State extends TimeState {
         private int countdown = TIMER;
+
         public Level4State() {
             Timer timer = new Timer();
             timer.scheduleAtFixedRate(new TimerTask() {
@@ -61,6 +66,7 @@ public class Level4 extends SpecialCandyLevel {
                             if (countdown == 0)
                                 timeUp();
                             wasUpdated();
+                            System.out.println(countdown);
                         }
                     });
                 }

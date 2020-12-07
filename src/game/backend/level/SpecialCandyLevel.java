@@ -14,6 +14,7 @@ public abstract class SpecialCandyLevel extends Level {
         this.maxSpecialCandy = maxSpecialCandy;
     }
 
+
     public void increaseSpecialCandy() {
         currentSpecialCandy++;
     }

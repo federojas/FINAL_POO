@@ -25,16 +25,6 @@ public class Level3 extends SpecialCandyLevel {
     }
 
     @Override
-    public void initialize() {
-       super.initialize();
-       activateInitialBombs(); //activa las bombas iniciales de la grilla
-    }
-
-    public void activateInitialBombs() {
-        ((Level3State) state()).activateInitialBombs();
-    }
-
-    @Override
     protected GameState newState() {
         return new Level3State();
     }
@@ -72,19 +62,15 @@ public class Level3 extends SpecialCandyLevel {
 
         private List<TimeBombCandy> currentBombs = new ArrayList<>();
 
-        public void activateInitialBombs() {
-            for(TimeBombCandy candy : currentBombs) {
-                candy.activate();
-            }
-        }
-
         public void bombDeactivated(TimeBombCandy bomb) {
-            specialEliminated();
-            Iterator<TimeBombCandy> timeBombCandyIterator = currentBombs.iterator();
-            while(timeBombCandyIterator.hasNext()) {
-                if(bomb.equalsId(timeBombCandyIterator.next())){
-                    timeBombCandyIterator.remove();
-                    break;
+            if(gridFormed()) {
+                specialEliminated();
+                Iterator<TimeBombCandy> timeBombCandyIterator = currentBombs.iterator();
+                while (timeBombCandyIterator.hasNext()) {
+                    if (bomb.equalsId(timeBombCandyIterator.next())) {
+                        timeBombCandyIterator.remove();
+                        break;
+                    }
                 }
             }
         }
@@ -98,9 +84,8 @@ public class Level3 extends SpecialCandyLevel {
         public void addMove() {
             super.addMove();
             for(TimeBombCandy candy : currentBombs) {
-                if(candy.isActivated()) //previene que se bajen la cantidad de vidas de las bombas que spawnean nuevas
+                if(gridFormed())
                     candy.decreaseTimer();
-                candy.activate();
             }
             checkBomb();
         }
