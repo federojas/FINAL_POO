@@ -19,8 +19,4 @@ public class ScorePanel extends BorderPane {
 	public void updateScore(String text) {
 		scoreLabel.setText(text);
 	}
-
-	public void updateGoldenCells(String text) {
-
-	}
 }
