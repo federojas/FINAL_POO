@@ -7,5 +7,6 @@ public interface GameListener {
 	void gridUpdated();
 	
 	void cellExplosion(Element e);
+	void updateScorePanel();
 	
 }

@@ -53,6 +53,10 @@ public class CandyGame implements GameListener {
 	}
 
 	@Override
+	public void updateScorePanel() {
+	}
+
+	@Override
 	public void gridUpdated() {
 	}
 

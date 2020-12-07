@@ -56,6 +56,11 @@ public class CandyFrame extends VBox {
 			}
 			@Override
 			public void cellExplosion(Element e) {}
+
+			@Override
+			public void updateScorePanel() {
+				scorePanel.updateScore(game().getStateMessage());
+			}
 		});
 
 		listener.gridUpdated();

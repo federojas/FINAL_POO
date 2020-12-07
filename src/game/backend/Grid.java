@@ -162,5 +162,12 @@ public abstract class Grid {
 	}
 
 	public int getSize() { return SIZE; }
+	public void updateScorePanel(){
+		if (listeners.size() > 0) {
+			for (GameListener gl: listeners) {
+				gl.updateScorePanel();
+			}
+		}
+	}
 
 }
