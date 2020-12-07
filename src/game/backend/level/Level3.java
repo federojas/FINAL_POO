@@ -11,9 +11,9 @@ import java.util.List;
 
 public class Level3 extends SpecialCandyLevel {
 
-    private static int MAX_BOMBS = 10;
-    private static int TIMER = 10;
-    private static double BOMB_SPAWN_RATE = 0.05;
+    private static final int MAX_BOMBS = 10;
+    private static final int BOMB_TIMER = 10;
+    private static final double BOMB_SPAWN_RATE = 0.05;
 
 
     public Level3(){
@@ -27,7 +27,7 @@ public class Level3 extends SpecialCandyLevel {
 
     @Override
     public CandyGeneratorCell generateCandyCell() {
-        return new BombCandyGeneratorCell(this, BOMB_SPAWN_RATE);
+        return new BombCandyGeneratorCell(this, BOMB_SPAWN_RATE, BOMB_TIMER);
     }
 
     public void addBomb(TimeBombCandy bomb) {
@@ -47,6 +47,7 @@ public class Level3 extends SpecialCandyLevel {
 
 
     public void deactivateBomb(TimeBombCandy bomb){ ((Level3State) state()).bombDeactivated(bomb); }
+
     @Override
     protected void setCell(int i, int j) {
         Cell[][] current=g();
@@ -93,6 +94,11 @@ public class Level3 extends SpecialCandyLevel {
         private void checkBomb() {
             if(!currentBombs.isEmpty() && currentBombs.get(0).timeUp())
                 lostGame();
+        }
+
+        @Override
+        public String toString() {
+            return "Remaining moves: " + currentBombs.get(0).getTime();
         }
 
     }

@@ -3,12 +3,11 @@ package game.backend.element;
 import java.util.Objects;
 
 public class TimeBombCandy extends TimeCandy {
-    private static final int TIMER = 10;
     private int id;
     private static int currentId = 0;
     private boolean isActive = false;
-    public TimeBombCandy(CandyColor color) {
-        super(color,TIMER);
+    public TimeBombCandy(CandyColor color, int timer) {
+        super(color, timer);
         this.id = getId();
     }
     public void decreaseTimer(){
