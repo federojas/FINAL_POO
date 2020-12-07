@@ -9,15 +9,6 @@ import game.backend.element.Wall;
 public abstract class Level extends Grid {
     private Cell wallCell;
     private CandyGeneratorCell candyGenCell;
-
-    public Level() {
-        initialize();
-    }
-
-    public Grid getGrid() {
-        return this;
-    }
-
     @Override
     protected void fillCells() {
 

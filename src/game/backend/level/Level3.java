@@ -103,7 +103,7 @@ public class Level3 extends SpecialCandyLevel {
 
         @Override
         public String toString() {
-            return "Remaining moves: " + currentBombs.get(0).getTime();
+            return "Score: "+super.toString()+"\tRemaining moves: " + currentBombs.get(0).getTime();
         }
 
     }
