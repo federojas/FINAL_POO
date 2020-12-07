@@ -59,6 +59,7 @@ public class CandyFrame extends VBox {
 		});
 
 		listener.gridUpdated();
+		scorePanel.updateScore(game().getStateMessage());
 
 		addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
 			if (lastPoint == null) {
@@ -72,9 +73,10 @@ public class CandyFrame extends VBox {
 					String message = game().getStateMessage();
 					if (game().isFinished()) {
 						if (game().playerWon()) {
-							message = message + " Finished - Player Won!";
+							message =  " Finished - Player Won!";
 						} else {
-							message = message + " Finished - Loser !";
+							message =  " Finished - Loser !";
+
 						}
 					}
 					scorePanel.updateScore(message);
