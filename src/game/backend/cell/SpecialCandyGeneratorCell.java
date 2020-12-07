@@ -26,4 +26,5 @@ public abstract class SpecialCandyGeneratorCell extends CandyGeneratorCell {
 
     protected abstract Element getSpecialCandy(Candy base);
 
+
 }

@@ -16,7 +16,4 @@ public  class TimeBonusCandy extends TimeCandy {
         return "+" + bonus;
     }
 
-    public TimeBonusCandy(CandyColor color, int time) {
-        super(color, time);
-    }
 }

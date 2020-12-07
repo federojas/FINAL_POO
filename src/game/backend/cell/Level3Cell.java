@@ -4,7 +4,7 @@ import game.backend.Grid;
 import game.backend.element.TimeBombCandy;
 import game.backend.level.Level3;
 
-public class Level3Cell extends Cell {
+public class Level3Cell extends TimeCell {
     public Level3Cell(Grid grid) {
         super(grid);
     }
@@ -17,4 +17,5 @@ public class Level3Cell extends Cell {
         }
         super.clearContent();
     }
+
 }
