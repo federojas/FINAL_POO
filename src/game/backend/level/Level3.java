@@ -43,7 +43,7 @@ public class Level3 extends SpecialCandyLevel {
     public boolean tryMove(int i1, int j1, int i2, int j2) {
         boolean result = super.tryMove(i1, j1, i2, j2);
         if (result) {
-            ((Level3State) state()).addMove();
+            (state()).addMove();
             wasUpdated();
         }
         return result;
@@ -97,7 +97,7 @@ public class Level3 extends SpecialCandyLevel {
 
         @Override
         public String toString() {
-            return "Score: "+super.toString()+"\tRemaining moves: " + currentBombs.get(0).getTime();
+            return super.toString()+"\tRemaining moves: " + currentBombs.get(0).getTime();
         }
 
     }
