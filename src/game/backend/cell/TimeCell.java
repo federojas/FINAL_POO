@@ -10,8 +10,8 @@ public class TimeCell extends Cell {
 
     @Override
     public String getFrontText() {
-        return ((TimeCandy) getContent()).getTimeInfo();
+        if(getContent().isSpecialCandy())
+            return ((TimeCandy) getContent()).getTimeInfo();
+        return super.getFrontText();
     }
-
-
 }
