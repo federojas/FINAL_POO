@@ -12,4 +12,6 @@ public class TimeCell extends Cell {
     public String getFrontText() {
         return ((TimeCandy) getContent()).getTimeInfo();
     }
+
+
 }

@@ -1,6 +1,8 @@
 package game.backend.level;
 
 import game.backend.GameState;
+import game.backend.cell.BombCandyGeneratorCell;
+import game.backend.cell.CandyGeneratorCell;
 
 public class Level2 extends Level {
     private static int MAX_MOVES = 20;
@@ -13,6 +15,11 @@ public class Level2 extends Level {
     @Override
     public String information() {
         return "Each explosion paints row or column depending on the direction of the movement. You should paint all cells before "+MAX_MOVES+" moves";
+    }
+
+    @Override
+    public CandyGeneratorCell generateCandyCell() {
+        return new CandyGeneratorCell(this);
     }
 
     @Override
