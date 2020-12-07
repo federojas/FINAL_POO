@@ -57,4 +57,9 @@ public abstract class Level extends Grid {
 
     public abstract CandyGeneratorCell generateCandyCell();
 
+    @Override
+    public String toString() {
+        return information();
+    }
+
 }
