@@ -1,7 +1,6 @@
 package game.frontend;
 
 import game.backend.CandyGame;
-import game.backend.Grid;
 import game.backend.level.*;
 import javafx.application.Application;
 import javafx.geometry.Pos;
@@ -10,14 +9,11 @@ import javafx.scene.control.Alert;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-
-
 
 public class GameApp extends Application {
 
@@ -35,22 +31,19 @@ public class GameApp extends Application {
 		primaryStage.getIcons().add(new Image("images/icono_candy.png"));
 		primaryStage.show();
 	}
+
 	private Scene mainMenu(Stage primaryStage){
-		Label title= new Label("Crush Candy");
+		Label title = new Label("Crush Candy");
 		title.setFont(new Font("Roboto",30));
-		title.setStyle("-fx-background-color:#e30052;-fx-font-weight: 800;-fx-padding: 10px;");
-		title.setTextFill(Paint.valueOf("white"));
+		setLabelStyle(title);
 
 		Label description= new Label("Welcome to the most flexible Candy Crush of all times!!");
 		description.setFont(new Font("Roboto",16));
-		description.setStyle("-fx-background-color:#e30052;-fx-font-weight: 800;-fx-padding: 10px;");
-		description.setTextFill(Paint.valueOf("white"));
+		setLabelStyle(description);
 
 		Label choose =new Label("Choose your level please");
 		choose.setFont(new Font("Roboto",12));
-		choose.setStyle("-fx-background-color:#e30052;-fx-font-weight: 800;-fx-padding: 10px;");
-		choose.setTextFill(Paint.valueOf("white"));
-
+		setLabelStyle(choose);
 
 
 		Button button1= new Button("Level 1");
@@ -58,25 +51,10 @@ public class GameApp extends Application {
 		Button button3= new Button("Level 3");
 		Button button4= new Button("Level 4");
 
-		button1.setStyle("-fx-background-color: #5490ff;");
-		button1.setTextFill(Paint.valueOf("white"));
-		button1.setPrefHeight(20);
-		button1.setPrefWidth(100);
-
-		button2.setStyle("-fx-background-color: #5490ff;");
-		button2.setTextFill(Paint.valueOf("white"));
-		button2.setPrefHeight(20);
-		button2.setPrefWidth(100);
-
-		button3.setStyle("-fx-background-color: #5490ff;");
-		button3.setTextFill(Paint.valueOf("white"));
-		button3.setPrefHeight(20);
-		button3.setPrefWidth(100);
-
-		button4.setStyle("-fx-background-color: #5490ff;");
-		button4.setTextFill(Paint.valueOf("white"));
-		button4.setPrefHeight(20);
-		button4.setPrefWidth(100);
+		setButtonStyle(button1);
+		setButtonStyle(button2);
+		setButtonStyle(button3);
+		setButtonStyle(button4);
 
 		button1.setOnAction(e -> openLevel(new Level1(),primaryStage));
 		button2.setOnAction(e -> openLevel(new Level2(), primaryStage));
@@ -87,16 +65,18 @@ public class GameApp extends Application {
 		menu.getChildren().addAll(title,description,choose,button1,button2,button3,button4);
 		menu.setPrefSize(600,400);
 		menu.setAlignment(Pos.CENTER);
-		StackPane stackPane= new StackPane(new ImageView(new Image("images/fondo.jpg")),menu);
+		StackPane stackPane= new StackPane(new ImageView(new Image("images/fondo.jpg")), menu);
 
 		return new Scene(stackPane);
 	}
+
 	private void openLevel(Level level, Stage stage){
 		levelinfo(level);
 		CandyGame game = new CandyGame(level);
 		Scene scene= new Scene(new CandyFrame(game));
 		stage.setScene(scene);
 	}
+
 	private void levelinfo(Level level){
 		Alert alert = new Alert(Alert.AlertType.INFORMATION);
 		alert.setTitle("Instructions");
@@ -105,4 +85,15 @@ public class GameApp extends Application {
 		alert.showAndWait();
 	}
 
+	private void setLabelStyle (Label label) {
+		label.setStyle("-fx-background-color:#e30052;-fx-font-weight: 800;-fx-padding: 10px;");
+		label.setTextFill(Paint.valueOf("white"));
+	}
+
+	private void setButtonStyle (Button button) {
+		button.setStyle("-fx-background-color: #5490ff;");
+		button.setTextFill(Paint.valueOf("white"));
+		button.setPrefHeight(20);
+		button.setPrefWidth(100);
+	}
 }

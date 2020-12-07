@@ -33,13 +33,16 @@ public class CandyFrame extends VBox {
 
 	public CandyFrame(CandyGame game) {
 		this.game = game;
-		getChildren().add(new AppMenu());
 		images = new ImageManager();
 		boardPanel = new BoardPanel(game.getSize(), game.getSize(), CELL_SIZE);
-		getChildren().add(boardPanel);
 		scorePanel = new ScorePanel();
+
+		getChildren().add(new AppMenu());
+		getChildren().add(boardPanel);
 		getChildren().add(scorePanel);
+
 		game.initGame();
+
 		GameListener listener;
 		game.addGameListener(listener = new GameListener() {
 			@Override
@@ -54,8 +57,8 @@ public class CandyFrame extends VBox {
 						Cell cell = CandyFrame.this.game.get(i, j);
 						Element element = cell.getContent();
 						Image image = images.getImage(element);
-
-						timeLine.getKeyFrames().add(new KeyFrame(frameTime, e -> boardPanel.setImage(finalI, finalJ, null, null,null)));
+/*
+						timeLine.getKeyFrames().add(new KeyFrame(frameTime, e -> boardPanel.setImage(finalI, finalJ, null, null,null)));*/
 						timeLine.getKeyFrames().add(new KeyFrame(frameTime, e -> boardPanel.setImage(finalI, finalJ, image, cell.getColor(),cell.getFrontText())));
 					}
 					frameTime = frameTime.add(frameGap);
