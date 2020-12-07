@@ -7,12 +7,12 @@ import game.backend.level.Level;
 public class TimeBonusGeneratorCell extends SpecialCandyGeneratorCell{
 
 
-    protected TimeBonusGeneratorCell(Level level, double generateRate) {
+    public TimeBonusGeneratorCell(Level level, double generateRate) {
         super(level, generateRate);
     }
 
     @Override
     protected Element getSpecialCandy(Candy base){
-        return null;
+        return new TimeBonusCandy(base.getColor());
     }
 }

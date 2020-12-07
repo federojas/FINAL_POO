@@ -1,12 +1,10 @@
 package game.backend.level;
 
 import game.backend.GameState;
-import game.backend.Grid;
 import game.backend.cell.*;
-import game.backend.element.Element;
 import game.backend.element.TimeBombCandy;
 
-import java.sql.Time;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -55,11 +53,9 @@ public class Level3 extends SpecialCandyLevel {
         current[i][j]= new Level3Cell(this);
     }
 
-    protected class Level3State extends GameState {
+    protected class Level3State extends TimeState {
 
         private List<TimeBombCandy> currentBombs = new ArrayList<>();
-        private long bombsDeactivated = 0;
-        private boolean gameLost = false;
 
         public void activateInitialBombs() {
             for(TimeBombCandy candy : currentBombs) {
@@ -68,7 +64,7 @@ public class Level3 extends SpecialCandyLevel {
         }
 
         public void bombDeactivated(TimeBombCandy bomb) {
-            bombsDeactivated+=1;
+            specialEliminated();
             Iterator<TimeBombCandy> timeBombCandyIterator = currentBombs.iterator();
             while(timeBombCandyIterator.hasNext()) {
                 if(bomb.equalsId(timeBombCandyIterator.next())){
@@ -76,8 +72,6 @@ public class Level3 extends SpecialCandyLevel {
                     break;
                 }
             }
-
-
         }
 
 
@@ -98,16 +92,7 @@ public class Level3 extends SpecialCandyLevel {
 
         private void checkBomb() {
             if(!currentBombs.isEmpty() && currentBombs.get(0).timeUp())
-                gameLost = true;
-        }
-
-
-        public boolean gameOver() { return playerWon() || gameLost; }
-
-        @Override
-        public boolean playerWon() {
-
-            return bombsDeactivated == MAX_BOMBS;
+                lostGame();
         }
 
     }

@@ -5,7 +5,10 @@ public  class TimeBonusCandy extends TimeCandy {
     public TimeBonusCandy(CandyColor color) {
         super(color, BONUS);
     }
-    //falta asignar todo lo de front end
+
+    public int getBonus() {
+        return BONUS;
+    }
 
     @Override
     public String getTimeInfo() {

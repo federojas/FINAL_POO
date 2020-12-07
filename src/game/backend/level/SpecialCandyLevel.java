@@ -1,5 +1,6 @@
 package game.backend.level;
 
+import game.backend.GameState;
 import game.backend.cell.BombCandyGeneratorCell;
 import game.backend.cell.SpecialCandyGeneratorCell;
 import game.backend.element.TimeCandy;
@@ -21,5 +22,27 @@ public abstract class SpecialCandyLevel extends Level {
         return maxSpecialCandy == currentSpecialCandy;
     }
 
+    protected class TimeState extends GameState {
 
+        private boolean gameLost = false;
+        private int specialsEliminated = 0;
+
+        @Override
+        public boolean gameOver() {
+            return playerWon() || gameLost;
+        }
+
+        @Override
+        public boolean playerWon() {
+            return !gameLost && specialsEliminated == maxSpecialCandy;
+        }
+
+        public void specialEliminated() {
+            specialsEliminated++;
+        }
+
+        public void lostGame() {
+            gameLost = true;
+        }
+    }
 }

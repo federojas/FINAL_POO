@@ -2,10 +2,12 @@ package game.backend.cell;
 
 import game.backend.Grid;
 import game.backend.element.TimeBombCandy;
+import game.backend.element.TimeBonusCandy;
 import game.backend.level.Level3;
+import game.backend.level.Level4;
 
-public class Level3Cell extends Cell {
-    public Level3Cell(Grid grid) {
+public class Level4Cell extends Cell {
+    public Level4Cell(Grid grid) {
         super(grid);
     }
 
@@ -13,7 +15,7 @@ public class Level3Cell extends Cell {
     public void clearContent() {
 
         if(getContent().isSpecialCandy()) {
-            ((Level3) getGrid()).deactivateBomb((TimeBombCandy) getContent());
+            ((Level4) getGrid()).removeTimeBonusCandy((TimeBonusCandy) getContent());
         }
         super.clearContent();
     }
