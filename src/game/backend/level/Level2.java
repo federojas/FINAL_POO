@@ -1,7 +1,6 @@
 package game.backend.level;
 
 import game.backend.GameState;
-import game.backend.cell.BombCandyGeneratorCell;
 import game.backend.cell.CandyGeneratorCell;
 
 public class Level2 extends Level {

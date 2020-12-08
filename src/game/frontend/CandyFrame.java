@@ -10,11 +10,9 @@ import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.geometry.Point2D;
 import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -113,7 +111,7 @@ public class CandyFrame extends VBox {
 		return (i >= 0 && i < game.getSize() && j >= 0 && j < game.getSize()) ? new Point2D(j, i) : null;
 	}
 	private void finishAlert(boolean won){
-		String playAgainText = "Play Again";
+		String playAgainText = "Main menu";
 		ButtonType playAgain = new ButtonType(playAgainText);
 		ButtonType exit = new ButtonType("Exit");
 		Alert alert = new Alert(Alert.AlertType.INFORMATION,"", playAgain, exit);

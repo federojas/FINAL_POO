@@ -19,12 +19,11 @@ public class TimeBombCandy extends TimeCandy {
         active = true;
     }
     public void decreaseTimer(){
-        if(getTime() > 0) //Timer queda en cero al perder el juego
             setTime(getTime()-1);
     }
 
     public boolean timeUp() {
-        return getTime() <= 0;
+        return getTime() == 0;
     }
 
     private int getId() {
@@ -34,6 +33,7 @@ public class TimeBombCandy extends TimeCandy {
     public boolean equalsId(TimeBombCandy other){
         return id==other.id;
     }
+
     @Override
     public String getTimeInfo() {
         return String.valueOf(getTime());

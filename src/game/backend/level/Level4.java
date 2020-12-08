@@ -2,12 +2,8 @@ package game.backend.level;
 
 import game.backend.GameState;
 import game.backend.cell.*;
-import game.backend.element.TimeBombCandy;
 import game.backend.element.TimeBonusCandy;
 import javafx.application.Platform;
-
-import java.sql.Time;
-import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -51,7 +47,7 @@ public class Level4 extends SpecialCandyLevel {
     }
 
 
-    private class Level4State extends TimeState {
+    private class Level4State extends SpecialCandyState {
         private int countdown = TIMER;
 
         public Level4State() {

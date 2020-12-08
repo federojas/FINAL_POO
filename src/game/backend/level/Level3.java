@@ -67,7 +67,7 @@ public class Level3 extends SpecialCandyLevel {
         current[i][j]= new Level3Cell(this);
     }
 
-    private class Level3State extends TimeState {
+    private class Level3State extends SpecialCandyState {
 
         private List<TimeBombCandy> currentBombs = new ArrayList<>();
 
