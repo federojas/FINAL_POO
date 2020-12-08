@@ -1,9 +1,6 @@
 package game.backend.level;
 
 import game.backend.GameState;
-import game.backend.cell.BombCandyGeneratorCell;
-import game.backend.cell.SpecialCandyGeneratorCell;
-import game.backend.element.TimeCandy;
 
 public abstract class SpecialCandyLevel extends Level {
     private int maxSpecialCandy;
@@ -22,7 +19,7 @@ public abstract class SpecialCandyLevel extends Level {
         return maxSpecialCandy == currentSpecialCandy;
     }
 
-    protected class TimeState extends GameState {
+    protected class SpecialState extends GameState {
 
         private boolean gameLost = false;
         private int specialsEliminated = 0;

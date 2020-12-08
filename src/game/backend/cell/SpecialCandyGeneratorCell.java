@@ -2,7 +2,6 @@ package game.backend.cell;
 
 import game.backend.element.Candy;
 import game.backend.element.Element;
-import game.backend.element.TimeCandy;
 import game.backend.level.Level;
 import game.backend.level.SpecialCandyLevel;
 

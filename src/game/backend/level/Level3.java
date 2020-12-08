@@ -3,7 +3,6 @@ package game.backend.level;
 import game.backend.GameState;
 import game.backend.cell.*;
 import game.backend.element.TimeBombCandy;
-
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -67,7 +66,7 @@ public class Level3 extends SpecialCandyLevel {
         current[i][j]= new Level3Cell(this);
     }
 
-    private class Level3State extends TimeState {
+    private class Level3State extends SpecialState {
 
         private List<TimeBombCandy> currentBombs = new ArrayList<>();
 

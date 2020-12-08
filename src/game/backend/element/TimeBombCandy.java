@@ -19,7 +19,6 @@ public class TimeBombCandy extends TimeCandy {
         active = true;
     }
     public void decreaseTimer(){
-        if(getTime() > 0) //Timer queda en cero al perder el juego
             setTime(getTime()-1);
     }
 
