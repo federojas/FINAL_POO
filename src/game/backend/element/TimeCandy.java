@@ -12,7 +12,7 @@ public abstract class TimeCandy extends Candy{
         return time;
     }
 
-    public void setTime(int time) {
+    protected void setTime(int time) {
         this.time = time;
     }
 

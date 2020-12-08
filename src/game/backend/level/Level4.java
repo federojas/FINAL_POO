@@ -70,7 +70,7 @@ public class Level4 extends SpecialCandyLevel {
             }, 0, 1000);
         }
 
-        public void addTime(int time) {
+        private void addTime(int time) {
             countdown += time;
         }
 
@@ -79,7 +79,7 @@ public class Level4 extends SpecialCandyLevel {
             addTime( candy.getTime() );
         }
 
-        public void timeUp() {
+        private void timeUp() {
             lostGame();
         }
 

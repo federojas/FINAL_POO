@@ -41,11 +41,13 @@ public class Level1 extends Level {
 			this.requiredScore = requiredScore;
 			this.maxMoves = maxMoves;
 		}
-		
+
+		@Override
 		public boolean gameOver() {
 			return playerWon() || getMoves() >= maxMoves;
 		}
-		
+
+		@Override
 		public boolean playerWon() {
 			return getScore() > requiredScore;
 		}
