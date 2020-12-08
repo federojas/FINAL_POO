@@ -76,7 +76,7 @@ public class Level4 extends SpecialCandyLevel {
 
         public void removeBonusTimeCandy( TimeBonusCandy candy ){
             specialEliminated();
-            addTime( candy.getBonus() );
+            addTime( candy.getTime() );
         }
 
         public void timeUp() {
