@@ -44,6 +44,7 @@ public class Level3 extends SpecialCandyLevel {
         if (result) {
             (state()).addMove();
             wasUpdated();
+           updateScorePanel();
         }
         return result;
     }

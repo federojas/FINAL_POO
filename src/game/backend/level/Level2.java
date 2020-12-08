@@ -33,6 +33,7 @@ public class Level2 extends Level {
                 setGoldenRow(i1);
             }
         wasUpdated();
+            updateScorePanel();
         }
         return ret;
     }
